@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-2xl mb-4 font-bold">{{ task.title }}</h1>
+<div class="bg-white p-6 rounded shadow-sm border border-gray-200">
+    <p>{{ task.description }}</p>
+    <p>Status: {{ task.get_status_display }}</p>
+    <p>Priority: {{ task.get_priority_display }}</p>
+    <p>Due Date: {{ task.due_date }}</p>
+    <p>Category: {{ task.category }}</p>
+    <p>Assigned To: {{ task.assigned_to }}</p>
+</div>
+<div class="mt-4">
+    <a href="{% url 'task_edit' task.id %}" class="bg-blue-500 text-white px-4 py-2 rounded">Edit</a>
+    <a href="{% url 'task_delete' task.id %}" class="bg-red-500 text-white px-4 py-2 rounded">Delete</a>
+    <a href="{% url 'index' %}" class="bg-gray-500 text-white px-4 py-2 rounded">Back</a>
+</div>
+{% endblock %}
