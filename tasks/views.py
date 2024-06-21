@@ -11,6 +11,26 @@ def index(request):
     return render(request, 'tasks/index.html', {'tasks': tasks})
 
 @login_required
+def dashboard(request):
+    tasks = Task.objects.all()
+    return render(request, 'tasks/dashboard.html', {'tasks': tasks})
+
+@login_required
+def tasks(request):
+    tasks = Task.objects.all()
+    return render(request, 'tasks/tasks.html', {'tasks': tasks})
+
+@login_required
+def calendar(request):
+    tasks = Task.objects.all()
+    return render(request, 'tasks/calendar.html', {'tasks': tasks})
+
+@login_required
+def members(request):
+    tasks = Task.objects.all()
+    return render(request, 'tasks/members.html', {'tasks': tasks})
+
+@login_required
 def task_detail(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     return render(request, 'tasks/task_detail.html', {'task': task})
