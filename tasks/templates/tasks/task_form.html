@@ -1,13 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-2xl mb-4 font-bold">{{ form.instance.pk|yesno:"Edit Task,Create Task" }}</h1>
-<form method="post" class="bg-white p-6 rounded shadow-sm border border-gray-200">
-    {% csrf_token %}
-    <div class="mb-4">
-        {{ form.as_p }}
-    </div>
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-    <a href="{% url 'index' %}" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</a>
-</form>
+<div class="max-w-lg mx-auto bg-white p-6 rounded shadow-sm border border-gray-200">
+    <h1 class="text-2xl mb-4 font-bold">{{ form.instance.pk|yesno:"Edit Task,Create Task" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-4 w-full">
+            {{ form.title }}
+        </div>
+        <div class="mb-4 w-full">
+            {{ form.description }}
+        </div>
+        <div class="flex justify-between items-center space-x-4">
+            <div class="mb-4 w-full">
+                {{ form.status }}
+            </div>
+            <div class="mb-4 w-full">
+                {{ form.priority }}
+            </div>
+        </div>
+        
+        <div class="flex justify-between items-center space-x-4">
+            <div class="mb-4 w-full">
+                {{ form.due_date }}
+            </div>
+            <div class="mb-4 w-full">
+                {{ form.category }}
+            </div>
+        </div>
+        <div class="mb-4 w-full">
+            {{ form.assigned_to }}
+        </div>
+        <div class="flex justify-between items-center space-x-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Save</button>
+            <a href="{% url 'index' %}" class="bg-gray-500 text-white px-4 py-2 rounded w-full text-center">Cancel</a>
+        </div>
+    </form>
+</div>
 {% endblock %}

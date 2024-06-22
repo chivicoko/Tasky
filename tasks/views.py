@@ -39,9 +39,10 @@ def task_detail(request, task_id):
 def task_create(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('/')
     else:
         form = TaskForm()
     return render(request, 'tasks/task_form.html', {'form': form})

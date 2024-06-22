@@ -8,10 +8,32 @@
 
 <div class="flex-1 bg-white p-8">
     {% include 'navbar.html' %}
-    <div class="flex justify-between my-4">
-        <h1 class="text-2xl font-bold text-gray-900">Task Manager</h1>
+    <div class="flex justify-between mb-8">
+        <div class="flex justify-between items-center py-2">
+            <div class="flex space-x-4 justify-between items-center">
+                <span class="flex items-center justify-between border border-gray-400 shadow-sm text-gray-600 px-3 py-2 rounded-md text-sm font-bold">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m5-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Preview
+                </span>
+                <span class="flex items-center justify-between border border-gray-400 shadow-sm text-gray-600 px-3 py-2 rounded-md text-sm font-bold">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m5-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Sort
+                </span>
+                <span class="flex items-center justify-between border border-gray-400 shadow-sm text-gray-600 px-3 py-2 rounded-md text-sm font-bold">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m5-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Filter
+                </span>
+            </div>    
+        </div>
+
         <div class="flex justify-between items-center">
-            <div class="flex justify-between mt-2">
+            <div class="flex justify-between">
                 <div class="flex space-x-2 items-center">
                     <div class="rounded-full w-5 h-5">
                         <img src="{% static 'images/image1.png' %}" class="rounded-full w-5 h-5" alt="User 1">
@@ -40,36 +62,42 @@
     <div class="grid grid-cols-3 gap-4">
         <div id="in_progress" class="py-4 pr-10 rounded-md">
             <div class="flex justify-between rounded-md border border-100 border-purple-600 px-2 mb-2">
-                <h3 class="text-xl my-1 font-semibold text-gray-900">In Progress</h3>
-                <button type="button" class="inline-flex justify-center rounded-md shadow-sm py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none dropdown-toggle">
+                <h3 class="flex justify-center items-center gap-2 text-lg font-semibold text-gray-700">
+                    In Progress <span id="in_progress_count" class="text-gray-400">(0)</span>
+                </h3>
+                <button type="button" class="inline-flex justify-center rounded-md shadow-sm py-2 text-sm font-medium text-gray-700 focus:outline-none dropdown-toggle">
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M6 10a2 2 0 114-0 2 2 0 01-4 0zM6 15a2 2 0 114-0 2 2 0 01-4 0zM6 5a2 2 0 114-0 2 2 0 01-4 0z"/>
                     </svg>
                 </button>
             </div>
-            <div id="in_progress_tasks"></div>
+            <div id="in_progress_tasks" class="my-5"></div>
         </div>
         <div id="completed" class="py-4 px-5 rounded-md">
             <div class="flex justify-between rounded-md border border-100 border-purple-600 px-2 mb-2">
-                <h3 class="text-xl my-1 font-semibold text-gray-900">Completed Task</h3>
-                <button type="button" class="inline-flex justify-center rounded-md shadow-sm py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none dropdown-toggle">
+                <h3 class="flex justify-center items-center gap-2 text-lg font-semibold text-gray-700">
+                    Completed Task <span id="completed_count" class="text-gray-400">(0)</span>
+                </h3>
+                <button type="button" class="inline-flex justify-center rounded-md shadow-sm py-2 text-sm font-medium text-gray-700 focus:outline-none dropdown-toggle">
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M6 10a2 2 0 114-0 2 2 0 01-4 0zM6 15a2 2 0 114-0 2 2 0 01-4 0zM6 5a2 2 0 114-0 2 2 0 01-4 0z"/>
                     </svg>
                 </button>
             </div>
-            <div id="completed_tasks"></div>
+            <div id="completed_tasks" class="my-5"></div>
         </div>
         <div id="overdue" class="py-4 pl-10 rounded-md">
             <div class="flex justify-between rounded-md border border-100 border-purple-600 px-2 mb-2">
-                <h3 class="text-xl my-1 font-semibold text-gray-900">Over-Due</h3>
-                <button type="button" class="inline-flex justify-center rounded-md shadow-sm py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none dropdown-toggle">
+                <h3 class="flex justify-center items-center gap-2 text-lg font-semibold text-gray-700">
+                    Over-Due <span id="overdue_count" class="text-gray-400">(0)</span>
+                </h3>
+                <button type="button" class="inline-flex justify-center rounded-md shadow-sm py-2 text-sm font-medium text-gray-700 focus:outline-none dropdown-toggle">
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M6 10a2 2 0 114-0 2 2 0 01-4 0zM6 15a2 2 0 114-0 2 2 0 01-4 0zM6 5a2 2 0 114-0 2 2 0 01-4 0z"/>
                     </svg>
                 </button>
             </div>
-            <div id="overdue_tasks"></div>
+            <div id="overdue_tasks" class="my-5"></div>
         </div>
     </div>
 </div>
@@ -82,25 +110,21 @@ $(document).ready(function() {
         const dueDate = new Date(dateTimeStr);
         const currentDate = new Date();
 
-        // Check if the due date is today
         if (dueDate.toDateString() === currentDate.toDateString()) {
             return dueDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         }
 
-        // Check if the due date is tomorrow
         const tomorrow = new Date(currentDate);
         tomorrow.setDate(currentDate.getDate() + 1);
         if (dueDate.toDateString() === tomorrow.toDateString()) {
             return 'Tomorrow';
         }
 
-        // For other dates, format as '16/04/24'
         const formattedDate = dueDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' });
-        // const formattedDate = dueDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' }).replace(/\//g, '-');
         return formattedDate;
     }
 
-    function loadTasks(status, container) {
+    function loadTasks(status, container, countElementId) {
         $.ajax({
             url: "{% url 'api_tasks' %}",
             data: {status: status},
@@ -197,40 +221,33 @@ $(document).ready(function() {
                                             </svg>
                                         </button>
                                     </form>
-                                    <a href="/tasks/task/${task.id}/edit/" class="text-green-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="20" height="30" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                            <path d="M19 3l2 2l-14 14h-2v-2z" />
-                                            <path d="M15 5l4 4" />
-                                        </svg>
-                                    </a>
                                 </div>
                             </div>
-                        </div>`;
+                        </div>
+                    `;
                 });
 
-                $(container).html(html);
+                $('#' + container).html(html);
+                $('#' + countElementId).text('(' + data.length + ')');
 
-                // Add event listeners for the dropdown toggle
-                $('.dropdown-toggle').off('click').on('click', function() {
-                    $(this).next('.dropdown-menu').toggleClass('hidden');
+                $('.dropdown-toggle').click(function() {
+                    $(this).siblings('.dropdown-menu').toggle();
                 });
 
-                // Hide the dropdown menu when clicking outside
-                $(document).off('click').on('click', function(e) {
-                    if (!$(e.target).closest('.dropdown-toggle, .dropdown-menu').length) {
-                        $('.dropdown-menu').addClass('hidden');
+                $(document).click(function(e) {
+                    if (!$(e.target).closest('.dropdown-toggle').length) {
+                        $('.dropdown-menu').hide();
                     }
                 });
             }
         });
     }
 
-    // Load tasks for each category
-    loadTasks('in_progress', '#in_progress_tasks');
-    loadTasks('completed', '#completed_tasks');
-    loadTasks('overdue', '#overdue_tasks');
+    loadTasks('In_progress', 'in_progress_tasks', 'in_progress_count');
+    loadTasks('Completed', 'completed_tasks', 'completed_count');
+    loadTasks('Overdue', 'overdue_tasks', 'overdue_count');
 });
+
 </script>
 {% endblock %}
 
