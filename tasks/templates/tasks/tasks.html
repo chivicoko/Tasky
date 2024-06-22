@@ -134,7 +134,7 @@ $(document).ready(function() {
                     var dueDateFormatted = formatDueDate(task.due_date);
 
                     html += `
-                        <div class="flex justify-between items-center py-2">
+                        <div class="flex justify-between items-center py-2 mt-8">
                             <div class="flex space-x-4 justify-between items-center">
                                 <span class="bg-red-300 text-gray-700 px-3 py-2 rounded-md text-xs font-semibold">${task.priority}</span>
                                 <span class="bg-white shadow-md text-purple-400 px-3 py-2 rounded-md text-xs font-semibold flex items-center">
@@ -158,10 +158,7 @@ $(document).ready(function() {
                                     <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdown-menu hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-${task.id}">
                                         <div class="py-1" role="none">
                                             <a href="/tasks/task/${task.id}/edit/" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem">Edit</a>
-                                            <form method="post" action="/tasks/task/${task.id}/delete/" role="menuitem">
-                                                {% csrf_token %}
-                                                <button type="submit" class="text-gray-700 block w-full text-left px-4 py-2 text-sm">Delete</button>
-                                            </form>
+                                            <a href="/tasks/task/${task.id}/delete/confirm/" class="text-gray-700 block w-full text-left px-4 py-2 text-sm">Delete</a>
                                         </div>
                                     </div>
                                 </div>
@@ -208,19 +205,23 @@ $(document).ready(function() {
                                             <path d="M22 12c-1.656 -3.422 -5.1 -6 -10 -6s-8.344 2.578 -10 6c1.656 3.422 5.1 6 10 6s8.344 -2.578 10 -6" />
                                         </svg>
                                     </a>
-                                    <form method="post" action="/tasks/task/${task.id}/delete/">
-                                        {% csrf_token %}
-                                        <button type="submit" class="text-red-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                <line x1="4" y1="7" x2="20" y2="7" />
-                                                <line x1="10" y1="11" x2="10" y2="17" />
-                                                <line x1="14" y1="11" x2="14" y2="17" />
-                                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                                <path d="M9 7v-3h6v3" />
-                                            </svg>
-                                        </button>
-                                    </form>
+                                    <a href="/tasks/task/${task.id}/delete/confirm/" class="text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <line x1="4" y1="7" x2="20" y2="7" />
+                                            <line x1="10" y1="11" x2="10" y2="17" />
+                                            <line x1="14" y1="11" x2="14" y2="17" />
+                                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                            <path d="M9 7v-3h6v3" />
+                                        </svg>
+                                    </a>
+                                    <a href="/tasks/task/${task.id}/edit/" class="text-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M4 20h4l11 -11a2.828 2.828 0 0 0 -4 -4l-11 11v4" />
+                                            <path d="M13.5 6.5l4 4" />
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         </div>

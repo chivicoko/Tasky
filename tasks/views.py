@@ -39,7 +39,6 @@ def task_detail(request, task_id):
 def task_create(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
             return redirect('/')
@@ -58,15 +57,21 @@ def task_edit(request, task_id):
     else:
         form = TaskForm(instance=task)
     return render(request, 'tasks/task_form.html', {'form': form})
-
+    
 @login_required
 def task_delete(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     if request.method == 'POST':
         task.delete()
-        return redirect('index')
-    return render(request, 'tasks/task_confirm_delete.html', {'task': task})
+        return redirect('index')  # Redirect to task list or any other appropriate view
+    return redirect('confirm_delete', task_id=task_id)  # Redirect to confirmation view if not POST
 
+
+@login_required
+def confirm_delete_view(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    return render(request, 'tasks/task_confirm_delete.html', {'task': task})
+    
 @require_http_methods(["GET"])
 def api_tasks(request):
     status = request.GET.get('status')
