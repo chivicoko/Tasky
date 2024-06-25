@@ -1,0 +1,4 @@
+.dropdown-toggle:hover + .dropdown-menu,
+.dropdown-menu:hover {
+    display: block !important;
+}
