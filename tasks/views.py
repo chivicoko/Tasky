@@ -132,13 +132,14 @@ class TaskListAPIView(generics.ListAPIView):
     serializer_class = TaskSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['priority', 'due_date', 'category']  # Define fields for filtering
-    ordering_fields = ['priority', 'due_date', 'category', 'created_at']  # Define fields for ordering
+    ordering_fields = ['priority', 'due_date', 'category']  # Define fields for ordering
 
     def get_queryset(self):
         queryset = Task.objects.all()
         return queryset
     
 
+# update task status
 @csrf_exempt
 def update_task_status(request):
     if request.method == 'POST':
