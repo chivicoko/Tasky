@@ -1,17 +1,55 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth import login, logout, authenticate
+from .forms import TaskForm, RegisterForm, CustomAuthenticationForm
+from django.contrib import messages
 from django.views.decorators.http import require_http_methods
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 from .models import Task
-from .forms import TaskForm
 from .serializers import TaskSerializer
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-@login_required
+
+def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('/')
+        else:
+            messages.error(request, 'Registration failed. Please correct the errors below.')
+    else:
+        form = RegisterForm()
+    return render(request, 'tasks/register.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = CustomAuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+            else:
+                messages.error(request, 'Invalid username or password.')
+        else:
+            messages.error(request, 'Invalid username or password.')
+    else:
+        form = CustomAuthenticationForm()
+    return render(request, 'tasks/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+
+# @login_required
 def index(request):
     tasks = Task.objects.all()
     return render(request, 'tasks/index.html', {'tasks': tasks})
@@ -142,6 +180,7 @@ class TaskListAPIView(generics.ListAPIView):
 # update task status
 @csrf_exempt
 def update_task_status(request):
+    # if request.user.is_authenticated:
     if request.method == 'POST':
         data = json.loads(request.body)
         task_id = data.get('taskId')

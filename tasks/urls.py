@@ -18,4 +18,8 @@ urlpatterns = [
     path('search/', views.search_tasks, name='task_search'),
     path('api/tasks/', TaskListAPIView.as_view(), name='task-list-api'),
     path('update-task-status/', views.update_task_status, name='update_task_status'),
+    
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 ]
