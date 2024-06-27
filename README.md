@@ -10,7 +10,7 @@
 
 ## Usage
 
-1. Navigate to `/tasks/` to view the task dashboard.
+1. Navigate to `/index/` to view the task dashboard.
 2. Use the links to create, edit, or delete tasks.
 3. Use the login link to authenticate.
 
