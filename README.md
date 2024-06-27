@@ -10,10 +10,13 @@
 
 ## Usage
 
-1. Navigate to `/tasks/` to view the task dashboard.
+1. Navigate to `/tasks/` or just `/` (root url) to view the task dashboard.
 2. Use the links to create, edit, or delete tasks.
 3. Use the login link to authenticate.
 
 ## Testing
 
 Run tests with: `python manage.py test`
+
+
+## NB: The device(laptop, ipad, PC, etc) needs to be online for the app to function properly.
