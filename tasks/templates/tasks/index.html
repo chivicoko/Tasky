@@ -174,7 +174,7 @@ $(document).ready(function() {
                                                 <path d="M6 10a2 2 0 114-0 2 2 0 01-4 0zM6 15a2 2 0 114-0 2 2 0 01-4 0zM6 5a2 2 0 114-0 2 2 0 01-4 0z"/>
                                             </svg>
                                         </button>
-                                        <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdown-menu hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-${task.id}">
+                                        <div class="origin-top-right absolute right-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdown-menu hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-${task.id}">
                                             <div class="py-1" role="none">
                                                 <a href="/tasks/task/${task.id}/edit/" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem">Edit</a>
                                                 <a href="/tasks/task/${task.id}/delete/confirm/" class="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Delete</a>
@@ -269,13 +269,11 @@ $(document).ready(function() {
     loadTasks('Overdue', 'overdue_tasks', 'overdue_count');
 
 
+
     // Sort button click handler
     $('#sort-btn').click(function() {
-        // Define your sorting logic here
-        // For demonstration, let's sort by title ascending
-        const sortBy = 'title'; // Replace with actual sorting criteria
+        const sortBy = 'title';
 
-        // Reload tasks with sorting criteria
         loadTasks('In_progress', 'in_progress_tasks', 'in_progress_count', sortBy);
         loadTasks('Completed', 'completed_tasks', 'completed_count', sortBy);
         loadTasks('Overdue', 'overdue_tasks', 'overdue_count', sortBy);
@@ -283,11 +281,8 @@ $(document).ready(function() {
 
     // Filter button click handler
     $('#filter-btn').click(function() {
-        // Define your filtering logic here
-        // For demonstration, let's filter by priority
-        const filterBy = 'priority'; // Replace with actual filtering criteria
+        const filterBy = 'priority';
 
-        // Reload tasks with filtering criteria
         loadTasks('In_progress', 'in_progress_tasks', 'in_progress_count', filterBy);
         loadTasks('Completed', 'completed_tasks', 'completed_count', filterBy);
         loadTasks('Overdue', 'overdue_tasks', 'overdue_count', filterBy);
@@ -298,15 +293,12 @@ $(document).ready(function() {
 
 
 // drag-and-drop
-
 function allowDrop(ev) {
     ev.preventDefault();
-    // console.log(ev.target.id);
 }
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-    // console.log(ev.target.id);
 }
 
 function drop(ev) {
@@ -325,15 +317,10 @@ function drop(ev) {
         newStatus;
     }
     
-    // Ensure we drop in the correct container
-    console.log(ev.target.className);
     if (ev.target.classList.contains('task-column')) {
-        // console.log(ev.target.className);
         ev.target.appendChild(taskElement);
         taskElement.dataset.status = newStatus;
-        // console.log(taskElement.dataset.status);
-
-        // Update status on the server
+        
         updateTaskStatus(data, newStatus);
     }
 }
@@ -367,7 +354,6 @@ function getCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;

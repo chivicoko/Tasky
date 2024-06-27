@@ -169,18 +169,16 @@ class TaskListAPIView(generics.ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    filterset_fields = ['priority', 'due_date', 'category']  # Define fields for filtering
-    ordering_fields = ['priority', 'due_date', 'category']  # Define fields for ordering
+    filterset_fields = ['priority', 'due_date', 'category']
+    ordering_fields = ['priority', 'due_date', 'category']
 
     def get_queryset(self):
         queryset = Task.objects.all()
         return queryset
     
 
-# update task status
 @csrf_exempt
 def update_task_status(request):
-    # if request.user.is_authenticated:
     if request.method == 'POST':
         data = json.loads(request.body)
         task_id = data.get('taskId')
