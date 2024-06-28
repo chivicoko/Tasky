@@ -12,36 +12,42 @@ class TaskForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'border border-gray-400 rounded p-2 w-full text-gray-600',
-                'placeholder': 'Enter task title'
+                'placeholder': 'Enter task title',
+                'id': 'modal-task-form-title-input',
             }),
             'description': forms.Textarea(attrs={
                 'class': 'border border-gray-400 rounded p-2 w-full text-gray-600',
                 'rows': 4,
-                'placeholder': 'Enter task description'
+                'placeholder': 'Enter task description',
+                'id': 'modal-task-form-description-input',
             }),
             'status': forms.Select(attrs={
                 'class': 'border border-gray-400 rounded p-2 w-full text-gray-600',
+                'id': 'modal-task-form-status-input',
             }),
             'priority': forms.Select(attrs={
                 'class': 'border border-gray-400 rounded p-2 w-full text-gray-600',
+                'id': 'modal-task-form-priority-input',
             }),
             'due_date': forms.DateInput(format='%Y-%m-%d', attrs={
                 'class': 'border border-gray-400 rounded p-2 w-full text-gray-600',
-                'placeholder': 'YYYY-MM-DD'
+                'placeholder': 'YYYY-MM-DD',
+                'id': 'modal-task-form-duedate-input',
             }),
             'category': forms.TextInput(attrs={
                 'class': 'border border-gray-400 rounded p-2 w-full text-gray-600',
-                'placeholder': 'Enter task category'
+                'placeholder': 'Enter task category',
+                'id': 'modal-task-form-category-input',
             }),
             'assigned_to': forms.Select(attrs={
                 'class': 'border border-gray-400 rounded p-2 w-full text-gray-600',
+                'id': 'modal-task-form-assigned-to-input',
             }),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['due_date'].input_formats = ['%Y-%m-%d', '%d/%m/%Y']
-
 
 
 class RegisterForm(UserCreationForm):

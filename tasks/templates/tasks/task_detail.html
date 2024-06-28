@@ -1,34 +1,35 @@
-{% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-lg md:max-w-4xl flex items-center mx-auto px-2">
-    <div class="form-wrapper max-h-fit bg-white md:mx-auto p-4 py-8 md:p-10 rounded-lg shadow-lg border border-gray-200">
-        <h1 class="text-3xl mb-6 font-bold text-gray-600">{{ task.title }}</h1>
+
+<div id="taskModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white px-4 py-8 md:p-8 rounded shadow-sm max-w-4xl w-full">
+        <div class="flex justify-between items-center space-x-2 mb-6">
+            <h1 id="task-title" class="text-3xl font-bold text-gray-700 px-auto">{{ task.title }}</h1>
+            <button id="closeModal" class="text-gray-600 items-top bg-gray-200 hover:bg-gray-100 font-bold text-xl p-2 px-4 rounded-full hover:text-gray-900"><strong>&times;</strong></button>
+        </div>
         <div class="mb-6">
             <p class="text-gray-700"><strong>Description:</strong></p>
-            <p class="text-gray-600">{{ task.description }}</p>
+            <p class="text-gray-600" id="modal-task-description">{{ task.description }}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <p class="text-gray-700"><strong>Status:</strong> {{ task.get_status_display }}</p>
+                <p class="text-gray-700" id="modal-task-status"><strong>Status:</strong> {{ task.status }}</p>
             </div>
             <div>
-                <p class="text-gray-700"><strong>Priority:</strong> {{ task.get_priority_display }}</p>
+                <p class="text-gray-700" id="modal-task-priority"><strong>Priority:</strong> {{ task.priority }}</p>
             </div>
             <div>
-                <p class="text-gray-700"><strong>Due Date:</strong> {{ task.due_date }}</p>
+                <p class="text-gray-700" id="modal-task-duedate"><strong>Due Date:</strong> {{ task.due_date }}</p>
             </div>
             <div>
-                <p class="text-gray-700"><strong>Category:</strong> {{ task.category }}</p>
+                <p class="text-gray-700" id="modal-task-category"><strong>Category:</strong> {{ task.category }}</p>
             </div>
             <div>
-                <p class="text-gray-700"><strong>Assigned To:</strong> {{ task.assigned_to }}</p>
+                <p class="text-gray-700" id="modal-task-assigned_to"><strong>Assigned To:</strong> {{ task.assigned_to }}</p>
             </div>
         </div>
-        <div class="mt-8 flex justify-center space-x-2 md:space-x-4">
-            <a href="{% url 'task_edit' task.id %}" class="bg-blue-600 w-full flex justify-center text-white px-4 py-2 rounded hover:bg-blue-700">Edit</a>
-            <a href="{% url 'task_delete' task.id %}" class="bg-red-600 w-full flex justify-center text-white px-4 py-2 rounded hover:bg-red-700">Delete</a>
-            <a href="{% url 'index' %}" class="bg-gray-600 text-white w-full flex justify-center px-4 py-2 rounded hover:bg-gray-700">Back</a>
+        <div class="mt-8 flex justify-end space-x-4">
+            <button type="button" id="closeModalTwo" class="w-full flex justify-center bg-blue-800 text-white py-2 rounded hover:bg-blue-700">Cancel</button>
         </div>
     </div>
 </div>

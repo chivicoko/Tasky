@@ -1,0 +1,26 @@
+{% if messages %}
+<div class="max-w-4xl mx-auto mt-4">
+    {% for message in messages %}
+        <div class="mb-4 p-4 rounded-lg shadow-lg flex justify-between items-center
+                    {% if message.tags == 'success' %}
+                        bg-green-100 border-l-4 border-green-500 text-green-700
+                    {% elif message.tags == 'error' or message.tags == 'danger' %}
+                        bg-red-100 border-l-4 border-red-500 text-red-700
+                    {% elif message.tags == 'warning' %}
+                        bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700
+                    {% elif message.tags == 'info' %}
+                        bg-blue-100 border-l-4 border-blue-500 text-blue-700
+                    {% else %}
+                        bg-gray-100 border-l-4 border-gray-500 text-gray-700
+                    {% endif %}" role="alert">
+            <p>{{ message }}</p>
+            <button type="button" class="ml-4 text-gray-500 hover:text-gray-700 focus:outline-none"
+                    onclick="this.parentElement.parentElement.style.display='none';">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6 4a1 1 0 011.707-.707l2.646 2.646 2.646-2.646A1 1 0 1114.414 5.12l-2.646 2.646 2.646 2.646a1 1 0 01-1.414 1.414L10 9.88l-2.646 2.646a1 1 0 01-1.414-1.414l2.646-2.646L6 5.12A1 1 0 016 4z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}

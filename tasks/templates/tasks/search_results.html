@@ -70,7 +70,7 @@
                 </div>                   
             </div>
 
-            <a href="{% url 'task_create' %}" class="bg-blue-800 text-white px-4 md:px-2 lg:px-4 py-2 rounded">+ Add Task</a>
+            <a href="javascript:void(0);" id="open-modal-button" class="bg-blue-800 text-white px-4 md:px-2 lg:px-4 py-2 rounded create-task-btn">+ Add Task</a>
         </div>
     </div>
 
@@ -113,8 +113,8 @@
                                     </button>
                                     <div class="origin-top-right absolute right-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdown-menu hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-{{task.id}}">
                                         <div class="py-1" role="none">
-                                            <a href="/tasks/task/{{task.id}}/edit/" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem">Edit</a>
-                                            <a href="/tasks/task/{{task.id}}/delete/confirm/" class="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Delete</a>
+                                            <a href="javascript:void(0);" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 edit-task-btn" role="menuitem" data-id="{{task.id}}" data-title="{{task.title}}" data-input_title="{{task.title}}" data-description="{{task.description}}" data-status="{{task.status}}" data-priority="{{task.priority}}" data-due_date="{{task.due_date}}" data-category="{{task.category}}">Edit</a>
+                                            <a href="javascript:void(0);" class="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 delete-task" data-id="{{task.id}}" data-title="{{task.title}}">Delete</a>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                             <path d="M22 12c-1.656 -3.422 -5.1 -6 -10 -6s-8.344 2.578 -10 6c1.656 3.422 5.1 6 10 6s8.344 -2.578 10 -6" />
                                         </svg>
                                     </a>
-                                    <a href="/tasks/task/{{task.id}}/delete/confirm/" class="text-red-500">
+                                    <a href="javascript:void(0);" class="text-red-500 delete-task" data-id="{{task.id}}" data-title="{{task.title}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <line x1="4" y1="7" x2="20" y2="7" />
@@ -171,7 +171,7 @@
                                             <path d="M9 7v-3h6v3" />
                                         </svg>
                                     </a>
-                                    <a href="/tasks/task/{{task.id}}/edit/" class="text-blue-500">
+                                    <a href="javascript:void(0);" class="text-blue-500 edit-task-btn" data-id="{{task.id}}" data-title="{{task.title}}" data-input_title="{{task.title}}" data-description="{{task.description}}" data-status="{{task.status}}" data-priority="{{task.priority}}" data-due_date="{{task.due_date}}" data-category="{{task.category}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <path d="M4 20h4l11 -11a2.828 2.828 0 0 0 -4 -4l-11 11v4" />
@@ -223,8 +223,8 @@
                                     </button>
                                     <div class="origin-top-right absolute right-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdown-menu hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-{{task.id}}">
                                         <div class="py-1" role="none">
-                                            <a href="/tasks/task/{{task.id}}/edit/" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem">Edit</a>
-                                            <a href="/tasks/task/{{task.id}}/delete/confirm/" class="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Delete</a>
+                                            <a href="javascript:void(0);" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 edit-task-btn" role="menuitem" data-id="{{task.id}}" data-title="{{task.title}}" data-input_title="{{task.title}}" data-description="{{task.description}}" data-status="{{task.status}}" data-priority="{{task.priority}}" data-due_date="{{task.due_date}}" data-category="{{task.category}}">Edit</a>
+                                            <a href="javascript:void(0);" class="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 delete-task" data-id="{{task.id}}" data-title="{{task.title}}">Delete</a>
                                         </div>
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@
                                             <path d="M22 12c-1.656 -3.422 -5.1 -6 -10 -6s-8.344 2.578 -10 6c1.656 3.422 5.1 6 10 6s8.344 -2.578 10 -6" />
                                         </svg>
                                     </a>
-                                    <a href="/tasks/task/{{task.id}}/delete/confirm/" class="text-red-500">
+                                    <a href="javascript:void(0);" class="text-red-500 delete-task" data-id="{{task.id}}" data-title="{{task.title}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <line x1="4" y1="7" x2="20" y2="7" />
@@ -281,7 +281,7 @@
                                             <path d="M9 7v-3h6v3" />
                                         </svg>
                                     </a>
-                                    <a href="/tasks/task/{{task.id}}/edit/" class="text-blue-500">
+                                    <a href="javascript:void(0);" class="text-blue-500 edit-task-btn" data-id="{{task.id}}" data-title="{{task.title}}" data-input_title="{{task.title}}" data-description="{{task.description}}" data-status="{{task.status}}" data-priority="{{task.priority}}" data-due_date="{{task.due_date}}" data-category="{{task.category}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <path d="M4 20h4l11 -11a2.828 2.828 0 0 0 -4 -4l-11 11v4" />
@@ -333,8 +333,8 @@
                                     </button>
                                     <div class="origin-top-right absolute right-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdown-menu hidden" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-{{task.id}}">
                                         <div class="py-1" role="none">
-                                            <a href="/tasks/task/{{task.id}}/edit/" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem">Edit</a>
-                                            <a href="/tasks/task/{{task.id}}/delete/confirm/" class="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Delete</a>
+                                            <a href="javascript:void(0);" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 edit-task-btn" role="menuitem" data-id="${task.id}" data-title="${task.title}" data-input_title="${task.title}" data-description="${task.description}" data-status="${task.status}" data-priority="${task.priority}" data-due_date="${task.due_date}" data-category="${task.category}">Edit</a>
+                                            <a href="javascript:void(0);" class="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 delete-task" data-id="${task.id}" data-title="${task.title}">Delete</a>
                                         </div>
                                     </div>
                                 </div>
@@ -381,7 +381,7 @@
                                             <path d="M22 12c-1.656 -3.422 -5.1 -6 -10 -6s-8.344 2.578 -10 6c1.656 3.422 5.1 6 10 6s8.344 -2.578 10 -6" />
                                         </svg>
                                     </a>
-                                    <a href="/tasks/task/{{task.id}}/delete/confirm/" class="text-red-500">
+                                    <a href="javascript:void(0);" class="text-red-500 delete-task" data-id="{{task.id}}" data-title="{{task.title}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <line x1="4" y1="7" x2="20" y2="7" />
@@ -391,7 +391,7 @@
                                             <path d="M9 7v-3h6v3" />
                                         </svg>
                                     </a>
-                                    <a href="/tasks/task/{{task.id}}/edit/" class="text-blue-500">
+                                    <a href="javascript:void(0);" class="text-blue-500 edit-task-btn" data-id="{{task.id}}" data-title="{{task.title}}" data-input_title="{{task.title}}" data-description="{{task.description}}" data-status="{{task.status}}" data-priority="{{task.priority}}" data-due_date="{{task.due_date}}" data-category="{{task.category}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <path d="M4 20h4l11 -11a2.828 2.828 0 0 0 -4 -4l-11 11v4" />
@@ -408,16 +408,38 @@
 
     </div>
 </div>
+
+
+<!-- task_confirm_delete modal -->
+{% include 'tasks/task_confirm_delete.html' %}
+
+<!-- task_form modal -->
+{% include 'tasks/task_form.html' %}
+
+<!-- task_form modal -->
+{% include 'tasks/task_detail.html' %}
+
+
 {% endblock %}
-
-
 
 
 {% block scripts %}
 <script>
 
-// drag-and-drop
+// Task dropdown toggle
+$(document).on('click', '.dropdown-toggle', function () {
+    $(this).siblings('.dropdown-menu').toggle();
+});
 
+$(document).on('click', function (e) {
+    if (!$(e.target).closest('.dropdown-toggle').length) {
+        $('.dropdown-menu').hide();
+    }
+});
+
+
+
+// drag-and-drop
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -442,7 +464,6 @@ function drop(ev) {
         newStatus;
     }
     
-    console.log(ev.target.className);
     if (ev.target.classList.contains('task-column')) {
         ev.target.appendChild(taskElement);
         taskElement.dataset.status = newStatus;
@@ -492,8 +513,6 @@ function getCookie(name) {
 
 
 
-
-
 // sort
 document.getElementById('sort-btn').addEventListener('click', function() {
     var sortDropdown = document.getElementById('sort-dropdown');
@@ -512,6 +531,27 @@ document.getElementById('filter-btn').addEventListener('click', function() {
     } else {
         filterDropdown.classList.add('hidden');
     }
+});
+
+
+
+// Function to open the delete modal
+function openModal(taskId, taskTitle) {
+    document.getElementById('modal-task-title').textContent = `Are you sure you want to delete the task "${taskTitle}"?`;
+    document.getElementById('modal-delete-form').action = `/tasks/task/${taskId}/delete/`;
+    document.getElementById('delete-modal-overlay').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('delete-modal-overlay').classList.add('hidden');
+}
+
+document.getElementById('modal-cancel').addEventListener('click', closeModal);
+
+$(document).on('click', '.delete-task', function () {
+    const taskId = $(this).data('id');
+    const taskTitle = $(this).data('title');
+    openModal(taskId, taskTitle);
 });
 
 </script>
