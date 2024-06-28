@@ -16,4 +16,5 @@
 3. Use the authenticate links - login, register, logout.
 
 
-## NB: The device(laptop, ipad, PC, etc) needs to be online for the app to function properly.
+### NB:
+The device(laptop, ipad, PC, etc) needs to be online for the app to function properly.
