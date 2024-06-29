@@ -8,7 +8,7 @@ This is a task management application designed to streamline your workflow and e
   <img src="./images/tasky.png" alt="Tasky App Screenshot" width="100%"/>
 </p>
 
-![Tasky App Screenshot](./images/tasky.png)
+<!-- ![Tasky App Screenshot](./images/tasky.png) -->
 
 It leverages the power of Django, providing a robust and scalable backend, while TailwindCSS and jQuery ensures a clean and modern user interface.
 - Django, TailwindCSS, jQuery
