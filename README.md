@@ -5,7 +5,7 @@
 This is a task management application designed to streamline your workflow and enhance productivity. The application offers a user-friendly interface where you can easily create, edit, organize, and track your tasks. With features such as user authentication, task prioritization, and filtering options, this task manager ensures that you stay on top of your commitments and deadlines.
 
 <p align="center">
-  <img src="./images/tasky.png" alt="Screenshot 1" width="300"/>
+  <img src="./images/tasky.png" alt="Tasky App Screenshot" width="100%"/>
 </p>
 
 It leverages the power of Django, providing a robust and scalable backend, while TailwindCSS and jQuery ensures a clean and modern user interface.
