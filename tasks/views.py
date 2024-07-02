@@ -68,21 +68,30 @@ def logout_view(request):
 def index(request):
     tasks = Task.objects.all()
     form = TaskForm()
-
+    
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/')
         
-        sort_by_priority = request.POST.get('sort_tasks')
-        filter_by_priority = request.POST.get('filter_tasks')
+        filter_option = request.POST.get('filter_tasks')
+        sort_option = request.POST.get('sort_tasks')
+
+        if filter_option == 'priority':
+            tasks = tasks.order_by('priority')
+        elif filter_option == 'due_date':
+            tasks = tasks.order_by('due_date')
+        elif filter_option == 'category':
+            tasks = tasks.order_by('category')
         
-        if filter_by_priority:
-            tasks = Task.objects.filter(priority=filter_by_priority)
-        elif sort_by_priority:
-            tasks = Task.objects.order_by(sort_by_priority)
-    
+        if sort_option == 'priority':
+            tasks = tasks.order_by('priority')
+        elif sort_option == 'due_date':
+            tasks = tasks.order_by('due_date')
+        elif sort_option == 'category':
+            tasks = tasks.order_by('category')
+
     return render(request, 'tasks/index.html', {'tasks': tasks, 'form': form})
 
 @login_required

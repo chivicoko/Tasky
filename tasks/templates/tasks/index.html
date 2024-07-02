@@ -12,6 +12,7 @@
         <div class="flex justify-between items-center py-2">
             <div class="flex space-x-4 md:space-x-2 lg:space-x-4 justify-between items-center">
                 <form method="POST" class="relative inline-block w-auto shadow-sm text-gray-600 rounded-md text-sm font-bold">
+                    {% csrf_token %}
                     <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-3 pointer-events-none">
                         <svg class="w-5 h-5" fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <rect x="311.652" y="33.391" width="33.391" height="33.391"></rect> </g> </g> <g> <g> <rect x="66.783" y="200.348" width="133.565" height="33.391"></rect> </g> </g> <g> <g> <rect x="66.783" y="289.391" width="100.174" height="33.391"></rect> </g> </g> <g> <g> <rect x="66.783" y="378.435" width="100.174" height="33.391"></rect> </g> </g> <g> <g> <rect x="200.348" y="267.13" width="33.391" height="111.304"></rect> </g> </g> <g> <g> <rect x="233.739" y="233.739" width="33.391" height="33.391"></rect> </g> </g> <g> <g> <rect x="233.739" y="378.435" width="33.391" height="33.391"></rect> </g> </g> <g> <g> <g> <rect x="411.826" y="267.13" width="33.391" height="144.696"></rect> <rect x="445.217" y="411.826" width="33.391" height="33.391"></rect> </g> </g> </g> <g> <g> <g> <polygon points="267.13,411.826 267.13,445.217 345.043,445.217 345.043,478.609 33.391,478.609 33.391,33.391 244.87,33.391 244.87,133.565 345.043,133.565 345.043,200.348 267.13,200.348 267.13,233.739 378.435,233.739 378.435,66.783 345.043,66.783 345.043,100.174 278.261,100.174 278.261,33.391 311.652,33.391 311.652,0 0,0 0,33.391 0,478.609 0,512 378.435,512 378.435,445.217 411.826,445.217 411.826,411.826 "></polygon> <rect x="378.435" y="233.739" width="33.391" height="33.391"></rect> <rect x="411.826" y="445.217" width="33.391" height="33.391"></rect> </g> </g> </g> <g> <g> <polygon points="478.609,445.217 478.609,478.609 445.217,478.609 445.217,512 512,512 512,445.217 "></polygon> </g> </g> <g> <g> <rect x="267.13" y="267.13" width="111.304" height="111.304"></rect> </g> </g> </g></svg>
                     </div>
@@ -24,26 +25,28 @@
                 </form>
 
                 <form method="POST" class="relative inline-block w-auto shadow-sm text-gray-600 rounded-md text-sm font-bold">
+                    {% csrf_token %}
                     <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-4 pointer-events-none">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.1924 5.65685C11.5829 5.26633 11.5829 4.63316 11.1924 4.24264L8.36397 1.41421C8.30576 1.356 8.24485 1.30212 8.18165 1.25259C7.50286 0.720577 6.55947 0.689024 5.84929 1.15793C5.73839 1.23115 5.63317 1.31658 5.53554 1.41421L2.70711 4.24264C2.31658 4.63316 2.31658 5.26633 2.70711 5.65685C3.09763 6.04738 3.7308 6.04738 4.12132 5.65685L6.00003 3.77814V18C6.00003 18.5523 6.44775 19 7.00003 19C7.55232 19 8.00003 18.5523 8.00003 18V3.8787L9.77818 5.65685C10.1687 6.04737 10.8019 6.04737 11.1924 5.65685Z" fill="#0F0F0F"></path> <path d="M12.7071 18.3432C12.3166 18.7337 12.3166 19.3668 12.7071 19.7574L15.5355 22.5858C15.6332 22.6834 15.7384 22.7689 15.8493 22.8421C16.6256 23.3546 17.6805 23.2692 18.364 22.5858L21.1924 19.7574C21.5829 19.3668 21.5829 18.7337 21.1924 18.3432C20.8019 17.9526 20.1687 17.9526 19.7782 18.3432L18 20.1213L18 6C18 5.44771 17.5523 5 17 5C16.4477 5 16 5.44771 16 6L16 20.2218L14.1213 18.3432C13.7308 17.9526 13.0976 17.9526 12.7071 18.3432Z" fill="#0F0F0F"></path> </g></svg>
                     </div>
-                    <select name="sort_tasks" id="sort_tasks" class="w-full h-10 pl-11 text-base border-2 border-gray-400 rounded-md appearance-none focus:shadow-outline">
-                        <option selected disabled>Sort</option>
-                        <option>Priority</option>
-                        <option>Due Date</option>
-                        <option>Category</option>
+                    <select name="filter_tasks" id="filter_tasks" class="w-full h-10 pl-11 text-base border-2 border-gray-400 rounded-md appearance-none focus:shadow-outline" onchange="this.form.submit()">
+                        <option selected disabled>Filter</option>
+                        <option value="priority">Priority</option>
+                        <option value="due_date">Due Date</option>
+                        <option value="category">Category</option>
                     </select>
                 </form>
                 
                 <form method="POST" class="relative inline-block w-auto shadow-sm text-gray-600 rounded-md text-sm font-bold">
-                    <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-3 pointer-events-none">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Filter</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Filter"> <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect> <line x1="4" y1="5" x2="16" y2="5" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> <line x1="4" y1="12" x2="10" y2="12" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> <line x1="14" y1="12" x2="20" y2="12" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> <line x1="8" y1="19" x2="20" y2="19" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> <circle id="Oval" stroke="#0C0310" stroke-width="2" stroke-linecap="round" cx="18" cy="5" r="2"> </circle> <circle id="Oval" stroke="#0C0310" stroke-width="2" stroke-linecap="round" cx="12" cy="12" r="2"> </circle> <circle id="Oval" stroke="#0C0310" stroke-width="2" stroke-linecap="round" cx="6" cy="19" r="2"> </circle> </g> </g> </g></svg>
+                    {% csrf_token %}
+                    <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-4 pointer-events-none">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.1924 5.65685C11.5829 5.26633 11.5829 4.63316 11.1924 4.24264L8.36397 1.41421C8.30576 1.356 8.24485 1.30212 8.18165 1.25259C7.50286 0.720577 6.55947 0.689024 5.84929 1.15793C5.73839 1.23115 5.63317 1.31658 5.53554 1.41421L2.70711 4.24264C2.31658 4.63316 2.31658 5.26633 2.70711 5.65685C3.09763 6.04738 3.7308 6.04738 4.12132 5.65685L6.00003 3.77814V18C6.00003 18.5523 6.44775 19 7.00003 19C7.55232 19 8.00003 18.5523 8.00003 18V3.8787L9.77818 5.65685C10.1687 6.04737 10.8019 6.04737 11.1924 5.65685Z" fill="#0F0F0F"></path> <path d="M12.7071 18.3432C12.3166 18.7337 12.3166 19.3668 12.7071 19.7574L15.5355 22.5858C15.6332 22.6834 15.7384 22.7689 15.8493 22.8421C16.6256 23.3546 17.6805 23.2692 18.364 22.5858L21.1924 19.7574C21.5829 19.3668 21.5829 18.7337 21.1924 18.3432C20.8019 17.9526 20.1687 17.9526 19.7782 18.3432L18 20.1213L18 6C18 5.44771 17.5523 5 17 5C16.4477 5 16 5.44771 16 6L16 20.2218L14.1213 18.3432C13.7308 17.9526 13.0976 17.9526 12.7071 18.3432Z" fill="#0F0F0F"></path> </g></svg>
                     </div>
-                    <select name="filter_tasks" id="filter_tasks" class="w-full h-10 pl-11 text-base border-2 border-gray-400 rounded-md appearance-none focus:shadow-outline">
-                        <option selected disabled>Filter</option>
-                        <option>Priority</option>
-                        <option>Due Date</option>
-                        <option>Category</option>
+                    <select name="sort_tasks" id="sort_tasks" class="w-full h-10 pl-11 text-base border-2 border-gray-400 rounded-md appearance-none focus:shadow-outline" onchange="this.form.submit()">
+                        <option selected disabled>Sort</option>
+                        <option value="priority">Priority</option>
+                        <option value="due_date">Due Date</option>
+                        <option value="category">Category</option>
                     </select>
                 </form>
             </div>    
